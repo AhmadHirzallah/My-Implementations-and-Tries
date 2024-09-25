@@ -1,0 +1,26 @@
+#include "ft_printf_utils.h"
+#include "../Libft/libft.h"
+#include "../ft_printf.h"
+#include <stdbool.h>
+#include <stdarg.h>
+
+void	ft_parse_flags(t_data *data_s)
+{
+	char	flag_chr;
+
+	while ((ft_strchr(FLAGS, *data_s->str)))
+	{
+		flag_chr = *data_s->str;
+		if ('0' == flag_chr)
+			data_s->fmt_flags_s.zero_padding = true;
+		else if ('+' == flag_chr)
+			data_s->fmt_flags_s.plus = true;
+		else if (' ' == flag_chr)
+			data_s->fmt_flags_s.space = true;
+		else if ('#' == flag_chr)
+			data_s->fmt_flags_s.hashtag = true;
+		else if ('-' == flag_chr)
+			data_s->fmt_flags_s.left_justified = true;
+		++data_s->str;
+	}
+}

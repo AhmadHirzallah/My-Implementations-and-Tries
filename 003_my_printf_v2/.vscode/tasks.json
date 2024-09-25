@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build my_printf",
+      "type": "shell",
+      "command": "gcc",
+      "args": [
+	"-g",
+        "-o",
+        "my_printf",
+        "main.c",
+        "ft_printf.c",
+        "Ft_printf_utils/*.c",
+        "Libft/*.c"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}
