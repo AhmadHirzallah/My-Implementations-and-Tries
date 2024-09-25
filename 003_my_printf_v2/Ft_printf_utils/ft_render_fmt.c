@@ -13,7 +13,7 @@ void	ft_render_fmt(t_data *data_s)
 		ft_print_chr(data_s, '%');
 	else if ('c' == specifier_chr)
 		ft_print_chr(data_s , (char)va_arg(data_s->ap, int));
-	//else if ("s" == specifier_chr)
-		//ft_prin_str(data_s, va_arg(data_s->ap, char *));
+	else if ('s' == specifier_chr)
+		ft_print_str(data_s, va_arg(data_s->ap, char *));
 
 }

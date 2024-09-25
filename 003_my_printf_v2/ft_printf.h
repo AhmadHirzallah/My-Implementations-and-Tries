@@ -56,6 +56,7 @@ typedef struct s_fmt_flags
 	//	(width) and (precision)
 	int	width_val;
 	int	precision_val;
+	int	padding_spaces;
 
 	// Base
 	t_e_base	base_e;

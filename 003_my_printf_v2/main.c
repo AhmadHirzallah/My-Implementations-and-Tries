@@ -6,6 +6,14 @@
 #include <stdarg.h>
 #include <stdio.h>
 
+
+void test_percent() {
+    int n = 10;
+    printf("\nCHARS=%d\n", n);
+    ft_printf("This is a percent symbol [%%]\n");
+    printf("This is a percent symbol [%%]\n");
+}
+
 void test_char() {
   //  printf("\x1b[31mTIME_CHARS=%d\x1b[0m\n", 42);
     int rtrn;
@@ -31,7 +39,42 @@ void test_char() {
 
 }
 
+void test_str() {
+    int val;
+    char *s = "Special Beam Cannon!";
+    printf("\nCHARS=%d\n", 10);
+    val = ft_printf("This is a str [%s]\n", s);
+    printf("val is [%d]\n\n", val);
+    val = printf("This is a str [%s]\n", s);
+    printf("val is [%d]\n\n", val);
+
+    printf("\nCHARS=%d\n", 10);
+    val = ft_printf("This is a str [%10s]\n", s);
+    printf("val is [%d]\n\n", val);
+    val = printf("This is a str [%10s]\n", s);
+    printf("val is [%d]\n\n", val);
+
+    printf("\nCHARS=%d\n", 10);
+    val =  ft_printf("This is a str [%.3s]\n", s);
+    printf("val is [%d]\n\n", val);
+    val =  printf("This is a str [%.3s]\n", s);
+    printf("val is [%d]\n\n", val);
+
+    printf("\nCHARS=%d\n", 10);
+    val = ft_printf("This is a str [%10.3s]\n", s);
+    printf("val is [%d]\n\n", val);
+    val = printf("This is a str [%10.3s]\n", s);
+    printf("val is [%d]\n\n", val);
+
+    printf("\nCHARS=%d\n", 10);
+    val = ft_printf("my: This is a str [%*.*s]", 3, 6, s);
+    printf("val is [%d]\n\n", val);
+    val = printf("\nmain: This is a str [%*.*s]\n", 3, 6, s);
+    printf("val is [%d]\n\n", val);
+}
+
 int main() {
-    test_char();
+    //test_char();
+    test_str();
     return 0;
 }

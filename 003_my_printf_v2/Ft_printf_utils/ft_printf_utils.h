@@ -15,7 +15,9 @@ void	ft_flush_buffer(t_data *data_s);
 void	ft_render_fmt(t_data *data_s);
 void	ft_pad_buf_wth_n_chrs(char c, int precision, t_data *data_s);
 void	ft_print_chr(t_data *data_s, int c);
-
+void	ft_putstr_buf_n(char *str, int precision, t_data *data_s);
+void	ft_print_str(t_data *data_s, char *str);
+void	ft_set_str_pad_spaces(t_data *data_s, char *str);
 
 #endif
 
