@@ -1,6 +1,6 @@
+#include "ft_printf_utils.h"
+#include "../Libft/libft.h"
 #include "ft_printf.h"
-#include "Libft/libft.h"
-#include "Ft_printf_utils/ft_printf_utils.h"
 
 int	ft_printf(const char *fmt, ...)
 {
@@ -8,7 +8,7 @@ int	ft_printf(const char *fmt, ...)
 
 	va_start(data_s.ap, fmt);
 	if (ft_init_data(&data_s, fmt))
-		return (-1);
+		return (MALLOC_ERR);
 	while (*data_s.str)
 	{
 		if (*data_s.str == '%' && *(++data_s.str))

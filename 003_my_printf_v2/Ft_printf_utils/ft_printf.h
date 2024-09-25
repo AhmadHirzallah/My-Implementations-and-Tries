@@ -8,6 +8,7 @@
 #include <stdbool.h>	//false and true
 #include <limits.h>		// INT_MAX and more	
 #include <stddef.h>
+#include "../Libft/libft.h"
 
 //	Buffer of 4k (4096 bytes)	--- Bitwise left shift
 //	0000 0000 0000 0001
@@ -25,6 +26,13 @@
 /*
 *	ALL the bools [+-' '0#][width][.precision]
 */
+
+typedef union
+{
+	unsigned long	uint64;
+	long			int64;
+}				t_union_trk;
+
 
 typedef enum	e_base
 {
@@ -61,6 +69,8 @@ typedef struct s_fmt_flags
 	// Base
 	t_e_base	base_e;
 	bool				upper_case;
+	bool				is_signed_nbr;
+	bool				is_negative_nbr;
 }							t_fmt_flags;
 
 typedef	struct s_data
@@ -76,6 +86,7 @@ typedef	struct s_data
 	char					*buf;
 	int								buf_index;
 	t_fmt_flags	fmt_flags_s;
+	t_union_trk	dynmic_nbr_vals;	
 }											t_data;
 
 int	ft_printf(const char *fmt, ...);

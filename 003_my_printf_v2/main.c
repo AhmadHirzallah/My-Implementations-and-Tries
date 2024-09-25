@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <stdarg.h>
 #include <stdio.h>
-
+#include <fcntl.h>
 
 void test_percent() {
     int n = 10;
@@ -32,8 +32,9 @@ void test_char() {
    // ft_printf("This is a char Y[%*c]\n", 'A');
     ft_printf("This is a char Y[%c]\n", '%');
     ft_printf("This is a char Y[%%]\n");
-    rtrn = printf("\n\nThis is a original char Y[%*]\n");
-	printf("\nOriginal rtrn = %d\n", rtrn);
+    //rtrn = printf("\n\nThis is a original char Y[%*]\n");
+	
+    //printf("\nOriginal rtrn = %d\n", rtrn);
     rtrn = ft_printf("This is a ft_ char Y[%*]\n");
 	printf("\nft_print rtrn = %d\n", rtrn);
 
@@ -67,14 +68,22 @@ void test_str() {
     printf("val is [%d]\n\n", val);
 
     printf("\nCHARS=%d\n", 10);
-    val = ft_printf("my: This is a str [%*.*s]", 3, 6, s);
+    val = ft_printf("my: This is a str [%*ak.*s]", 3, 6, s);
     printf("val is [%d]\n\n", val);
     val = printf("\nmain: This is a str [%*.*s]\n", 3, 6, s);
     printf("val is [%d]\n\n", val);
 }
 
 int main() {
-    //test_char();
-    test_str();
+    int a = printf("aiw");
+    printf ("%d\n", a);
     return 0;
+    
+
+
+    
+    //test_char();
+    // test_str();
+   // if (stdout->_flags & 8)
+    //close(1);
 }

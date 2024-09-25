@@ -1,10 +1,15 @@
 #ifndef	FT_PRINTF_UTILS_H
 # define FT_PRINTF_UTILS_H
 
-#include <stdbool.h>
-#include <stdarg.h>
-#include "../ft_printf.h"
-#include "../Libft/libft.h"
+# include <stdio.h>		//todo check printf
+# include <stdlib.h>		//malloc and free
+# include <unistd.h>		// write
+# include <stdarg.h>		//variadic stuffs
+# include <stdbool.h>	//false and true
+# include <limits.h>		// INT_MAX and more	
+# include <stddef.h>
+# include "ft_printf.h"
+# include "../Libft/libft.h"
 
 int								ft_init_data(t_data *data_s, const char *fmt);
 int								ft_parse_fmt(t_data *data_s);

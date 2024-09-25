@@ -1,8 +1,6 @@
 #include "ft_printf_utils.h"
+#include "ft_printf.h"
 #include "../Libft/libft.h"
-#include "../ft_printf.h"
-#include <stdbool.h>
-#include <stdarg.h>
 
 int	ft_init_data(t_data *data_s, const char *fmt)
 {
@@ -12,5 +10,6 @@ int	ft_init_data(t_data *data_s, const char *fmt)
 	if (NULL == data_s->buf)
 		return (MALLOC_ERR);
 	data_s->buf_index = 0;
+	data_s->dynmic_nbr_vals.int64 = 0;
 	return (OK);
 }

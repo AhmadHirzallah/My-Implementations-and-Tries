@@ -1,7 +1,7 @@
+
 #include "ft_printf_utils.h"
 #include "../Libft/libft.h"
-#include "../ft_printf.h"
-
+#include "ft_printf.h"
 void	ft_pad_buf_wth_n_chrs(char c, int precision, t_data *data_s)
 {
 	if (precision <= 0)

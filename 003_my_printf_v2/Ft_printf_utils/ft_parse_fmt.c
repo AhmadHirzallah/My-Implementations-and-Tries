@@ -1,7 +1,7 @@
+
 #include "ft_printf_utils.h"
 #include "../Libft/libft.h"
-#include "../ft_printf.h"
-
+#include "ft_printf.h"
 int	ft_parse_fmt(t_data *data_s)
 {
 	ft_bzero(&data_s->fmt_flags_s, sizeof(t_fmt_flags));
