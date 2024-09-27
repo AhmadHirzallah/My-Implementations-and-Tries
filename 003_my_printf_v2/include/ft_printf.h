@@ -6,7 +6,6 @@
 #include <unistd.h>		// write
 #include <stdarg.h>		//variadic stuffs
 #include <stdbool.h>	//false and true
-#include <limits.h>		// INT_MAX and more	
 #include <stddef.h>
 #include "libft.h"
 
@@ -14,12 +13,12 @@
 //	0000 0000 0000 0001
 //	0000 0000 0000 0010
 //	0001 0000 0000 0000	
-#define BUFFER_SIZE		(1<<12)
-#define	FLAGS			"+ 0-#"
-#define SPECIFIERS		"cspdiuxX%"
-#define DIGITS			"0123456789"
-#define HEXADEC_UPPER	"0123456789ABCDEF"
-#define HEXADEC_LOWER	"0123456789abcdef"
+# define BUFFER_SIZE		(1<<12)
+# define	FLAGS			"+ 0-#"
+# define SPECIFIERS		"cspdiuxX%"
+# define DIGITS			"0123456789"
+# define HEXADEC_LOWER	"0123456789abcdef"
+# define HEXADEC_UPPER	"0123456789ABCDEF"
 
 
 
@@ -27,17 +26,16 @@
 *	ALL the bools [+-' '0#][width][.precision]
 */
 
-typedef union
+typedef union	t_nbrs_uni
 {
 	unsigned long	uint64;
 	long			int64;
-}				t_union_trk;
+}								t_nbrs_uni;
 
 
 typedef enum	e_base
 {
-	BASE_2 = 2,
-	BASE_8 = 8,
+	AS_NULL = 0,
 	BASE_10 = 10,
 	BASE_16 = 16
 }						t_e_base;
@@ -49,6 +47,13 @@ typedef enum	e_err
 	PARSE_ERR = -10
 }						t_e_err;
 
+typedef enum	e_for_nbrs
+{
+	AS_NULL_NOT_NEG = 0,
+	NEG_NBR,
+	CONVERTED_FROM_NEG
+}							t_e_for_nbrs;
+
 typedef struct s_fmt_flags
 {
 	//	Parsing stuff
@@ -56,7 +61,7 @@ typedef struct s_fmt_flags
 	bool	plus;
 	bool	space;
 	bool	hashtag;
-	bool	zero_padding;
+	bool	is_zero_pad;
 
 	// "csdixXpu...."
 	char	specifier;
@@ -65,12 +70,13 @@ typedef struct s_fmt_flags
 	int	width_val;
 	int	precision_val;
 	int	padding_spaces;
+	int	padding_zeros;
 
 	// Base
-	t_e_base	base_e;
-	bool				upper_case;
-	bool				is_signed_nbr;
-	bool				is_negative_nbr;
+	t_e_base						base_e;
+	bool										upper_case;
+	bool										is_signed_nbr;
+	t_e_for_nbrs	neg_nbr_track;
 }							t_fmt_flags;
 
 typedef	struct s_data
@@ -86,7 +92,9 @@ typedef	struct s_data
 	char					*buf;
 	int								buf_index;
 	t_fmt_flags	fmt_flags_s;
-	t_union_trk	dynmic_nbr_vals;	
+	t_nbrs_uni	dynmic_nbr_vals;
+	char	tmp_nbrs_bfr[64];
+	int		tmp_nbrs_bfr_index; //tmp_nbrs_bfr index
 }											t_data;
 
 int	ft_printf(const char *fmt, ...);

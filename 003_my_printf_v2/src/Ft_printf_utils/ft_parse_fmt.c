@@ -1,10 +1,13 @@
 #include "../../include/ft_printf_utils.h"
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
+
 int	ft_parse_fmt(t_data *data_s)
 {
 	ft_bzero(&data_s->fmt_flags_s, sizeof(t_fmt_flags));
-	data_s->fmt_flags_s.precision_val = -1;		// Because we will consider (.0) as a case so we check if precision is major  or equal than 0; Not the width; (WIDTH CANT == 0) but precision can.
+	ft_bzero(data_s->tmp_nbrs_bfr, sizeof(data_s->tmp_nbrs_bfr));
+	data_s->tmp_nbrs_bfr_index = 0;
+	data_s->fmt_flags_s.precision_val = -1;	// Because we will consider (.0) as a case so we check if precision is major  or equal than 0; Not the width; (WIDTH CANT == 0) but precision can.
 	ft_parse_flags(data_s);
 	// For width:
 	ft_extract_val(data_s, &data_s->fmt_flags_s.width_val);
@@ -26,7 +29,6 @@ int	ft_parse_fmt(t_data *data_s)
 		}
 	}
 	return (OK);
-
 	/*ft_parse_width(data_s);
 	ft_parse_precision(data_s);*/
 	

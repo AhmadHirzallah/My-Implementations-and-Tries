@@ -9,7 +9,7 @@ void	ft_parse_flags(t_data *data_s)
 	{
 		flag_chr = *data_s->str;
 		if ('0' == flag_chr)
-			data_s->fmt_flags_s.zero_padding = true;
+			data_s->fmt_flags_s.is_zero_pad = true;
 		else if ('+' == flag_chr)
 			data_s->fmt_flags_s.plus = true;
 		else if (' ' == flag_chr)

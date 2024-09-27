@@ -1,6 +1,7 @@
 #include "../../include/ft_printf_utils.h"
 #include "../../include/libft.h"
 #include "../../include/ft_printf.h"
+
 int	ft_init_data(t_data *data_s, const char *fmt)
 {
 	data_s->written_chrs_count = 0;
