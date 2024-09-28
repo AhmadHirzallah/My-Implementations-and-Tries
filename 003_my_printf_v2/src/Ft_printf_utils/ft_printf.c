@@ -1,10 +1,10 @@
+#include "../../include/ft_printf.h"
 #include "../../include/ft_printf_utils.h"
 #include "../../include/libft.h"
-#include "../../include/ft_printf.h"
 
 int	ft_printf(const char *fmt, ...)
 {
-	t_data	data_s;
+	t_data data_s;
 
 	va_start(data_s.ap, fmt);
 	if (ft_init_data(&data_s, fmt))
@@ -26,6 +26,6 @@ int	ft_printf(const char *fmt, ...)
 	}
 	ft_flush_buffer(&data_s);
 	va_end(data_s.ap);
-	free(data_s.buf); 
+	free(data_s.buf);
 	return (data_s.written_chrs_count);
 }

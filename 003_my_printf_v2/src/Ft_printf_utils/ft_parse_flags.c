@@ -1,6 +1,7 @@
+#include "../../include/ft_printf.h"
 #include "../../include/ft_printf_utils.h"
 #include "../../include/libft.h"
-#include "../../include/ft_printf.h"
+
 void	ft_parse_flags(t_data *data_s)
 {
 	char	flag_chr;

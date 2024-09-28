@@ -1,6 +1,7 @@
+#include "../../include/ft_printf.h"
 #include "../../include/ft_printf_utils.h"
 #include "../../include/libft.h"
-#include "../../include/ft_printf.h"
+
 void	ft_print_chr(t_data *data_s, int c)
 {
 	int	width;
@@ -21,4 +22,4 @@ void	ft_print_chr(t_data *data_s, int c)
 	}
 	else
 		ft_pad_buf_wth_n_chrs((char)c, 1, data_s);
-}	
+}

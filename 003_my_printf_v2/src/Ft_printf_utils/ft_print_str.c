@@ -1,6 +1,7 @@
+#include "../../include/ft_printf.h"
 #include "../../include/ft_printf_utils.h"
 #include "../../include/libft.h"
-#include "../../include/ft_printf.h"
+
 void	ft_print_str(t_data *data_s, char *str)
 {
 	if (NULL == str)
@@ -11,7 +12,7 @@ void	ft_print_str(t_data *data_s, char *str)
 		if (data_s->fmt_flags_s.precision_val >= 0)
 			ft_putstr_buf_n(str, data_s->fmt_flags_s.precision_val, data_s);
 		else
-			ft_putstr_buf_n(str, ft_strlen(str), data_s);	
+			ft_putstr_buf_n(str, ft_strlen(str), data_s);
 		ft_pad_buf_wth_n_chrs(' ', data_s->fmt_flags_s.padding_spaces, data_s);
 	}
 	else
@@ -20,6 +21,6 @@ void	ft_print_str(t_data *data_s, char *str)
 		if (data_s->fmt_flags_s.precision_val >= 0)
 			ft_putstr_buf_n(str, data_s->fmt_flags_s.precision_val, data_s);
 		else
-			ft_putstr_buf_n(str, ft_strlen(str), data_s);	
+			ft_putstr_buf_n(str, ft_strlen(str), data_s);
 	}
 }
