@@ -1,7 +1,19 @@
-#include "../include/ft_printf.h"
-#include "../include/libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_fmt.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahirzall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/29 16:40:25 by ahirzall          #+#    #+#             */
+/*   Updated: 2024/09/29 16:40:26 by ahirzall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static	void ft_initiate_parsing(t_data_s *data_s)
+#include "ft_printf.h"
+#include "libft.h"
+
+static void	ft_initiate_parsing(t_data_s *data_s)
 {
 	ft_bzero(&data_s->flags_s, sizeof(data_s->flags_s));
 	ft_bzero(&data_s->nbr_s, sizeof(data_s->nbr_s));
@@ -10,7 +22,7 @@ static	void ft_initiate_parsing(t_data_s *data_s)
 
 static void	ft_parse_flags(t_data_s *data_s)
 {
-	while (ft_strchr(FLAGS, *data_s->str) )
+	while (ft_strchr(FLAGS, *data_s->str))
 	{
 		if ('0' == *data_s->str)
 			data_s->flags_s.zero_pad_fl = true;
@@ -26,7 +38,7 @@ static void	ft_parse_flags(t_data_s *data_s)
 	}
 }
 
-static	int	ft_extract_vals(t_data_s *data_s, int *value)
+static int	ft_extract_vals(t_data_s *data_s, int *value)
 {
 	if (('*' == *data_s->str) && *(data_s->str++))
 	{
@@ -52,12 +64,12 @@ static void	ft_set_specifiers_flags(t_data_s *data_s)
 
 int	ft_parse_fmt(t_data_s *data_s)
 {
-	ft_initial_parsing(data_s);
+	ft_initiate_parsing(data_s);
 	ft_parse_flags(data_s);
 	ft_extract_vals(data_s, &data_s->flags_s.width_val);
-	if(('.' == *data_s->str) && *(++data_s->str))
+	if (('.' == *data_s->str) && *(++data_s->str))
 		ft_extract_vals(data_s, &data_s->flags_s.precision_val);
-	if(ft_strchr(SPECIFIERS, (int)*data_s->str))
+	if (ft_strchr(SPECIFIERS, (int)*data_s->str))
 	{
 		ft_set_specifiers_flags(data_s);
 		return (OK);

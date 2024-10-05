@@ -1,13 +1,13 @@
 NAME            =   libftprintf.a
 CC              =   cc
-CFLAGS          =   -Wall -Wextra -Werror -g
+CFLAGS          =   -Wall -Wextra -Werror
 AR              =   ar
 ARFLAGS         =   rcs
 RM              =   rm -rf
 
 SRC_DIR         =   ft_printf
 OBJ_DIR         =   obj
-LIBFT_PATH      =   Libft
+LIBFT_PATH      =   libft
 INCLUDE_DIR     =   include
 
 SRC             =   ft_flush_buffer ft_itoa_base_into_bfr ft_parse_fmt \
@@ -38,8 +38,7 @@ $(NAME): $(LIBFT) $(OBJS)
 	cp $(LIBFT) $(NAME)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-bonus:
-	$(MAKE) all
+bonus: all
 	
 # Build the Libft library
 $(LIBFT):

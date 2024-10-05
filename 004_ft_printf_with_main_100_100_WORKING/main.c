@@ -20,9 +20,10 @@ int main()
 
     int     val;
 
-    val = ft_printf("|%5d|", 255);
+    
+    val = ft_printf("|%u|\n", UINT_MAX);
     ft_printf("Value is: [%d]\n", val);
-    val = ft_printf("|%5d|", 255);
+    val = printf("|%u|\n", UINT_MAX);
     ft_printf("Value is: [%d]\n", val);
 
 
@@ -38,6 +39,10 @@ int main()
 
     return 0;
     /*
+    val = ft_printf("|%5d|", 255);
+    ft_printf("Value is: [%d]\n", val);
+    val = ft_printf("|%5d|", 255);
+    ft_printf("Value is: [%d]\n", val);
     val = ft_printf("|%d|", -255);
     ft_printf("Value is: [%d]\n", val);
     val = ft_printf("|%d|", -255);
