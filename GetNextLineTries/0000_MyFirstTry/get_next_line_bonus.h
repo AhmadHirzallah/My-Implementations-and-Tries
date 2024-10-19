@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_flush_buffer.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahirzall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/29 16:40:10 by ahirzall          #+#    #+#             */
+/*   Updated: 2024/09/29 16:40:14 by ahirzall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_BONUS_H
 # define GET_NEXT_LINE_BONUS_H
 
@@ -12,9 +24,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-void			begin_lines_into_lnked_lst(t_linked_lst **lnked_lst, int fd);
-t_linked_lst	*find__get_last_node(t_linked_lst *lnkd_lst);
-bool			is_newline(t_linked_lst *list_node);
-void			add_into_lnked_lst(t_linked_lst **lnked_lst, char *filled_bfr);
+char	*get_next_line(int fd);
 
 #endif

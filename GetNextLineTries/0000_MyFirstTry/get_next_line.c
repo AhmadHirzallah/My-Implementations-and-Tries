@@ -1,8 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ahirzall <ahirzall@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/19 21:43:35 by ahirzall          #+#    #+#             */
+/*   Updated: 2024/10/19 21:43:37 by ahirzall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 #include "get_next_line_bonus.h"
 #include <stdio.h>
 
-char	*get_line(t_linked_lst *lst_node)
+static size_t	calc_len_till_newline(t_linked_lst *lst_node)
+{
+	size_t	size;
+	size_t	i;
+
+	if (NULL == lst_node)
+		return (0);
+	size = 0;
+	while (lst_node)
+	{
+		i = 0;
+		while (lst_node->str_buf_content[i])
+		{
+			if (lst_node->str_buf_content[i] == '\n')
+				return (size + 1);
+			else
+			{
+				i++;
+				size++;
+			}
+		}
+		lst_node = lst_node->next_node;
+	}
+	return (size);
+}
+
+static char	*get_one_line(t_linked_lst *lst_node)
 {
 	char	*line_str;
 	size_t	str_size;
@@ -17,7 +55,16 @@ char	*get_line(t_linked_lst *lst_node)
 	return (line_str);
 }
 
-void	prepare_lnkd_lst_for_next(t_linked_lst **lnked_lst)
+t_linked_lst	*find__get_last_node(t_linked_lst *lnkd_lst)
+{
+	if (NULL == lnkd_lst)
+		return (NULL);
+	while (lnkd_lst->next_node)
+		lnkd_lst = lnkd_lst->next_node;
+	return (lnkd_lst);
+}
+
+static void	prepare_lnkd_lst_for_next(t_linked_lst **lnked_lst)
 {
 	t_linked_lst	*last_node;
 	t_linked_lst	*clean_new_node;
@@ -46,12 +93,12 @@ char	*get_next_line(int fd)
 	static t_linked_lst	*list_head = NULL;
 	char				*line_str;
 
-	if (fd < 0 || (BUFFER_SIZE <= 0))
+	if (fd < 0 || (BUFFER_SIZE <= 0) || BUFFER_SIZE > 1000000 || fd > 1024)
 		return (NULL);
 	begin_lines_into_lnked_lst(&list_head, fd);
 	if (!list_head)
 		return (NULL);
-	line_str = get_line(list_head);
+	line_str = get_one_line(list_head);
 	prepare_lnkd_lst_for_next(&list_head);
 	return (line_str);
 }
