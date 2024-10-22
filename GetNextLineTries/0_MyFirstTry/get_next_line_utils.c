@@ -40,8 +40,12 @@ static void	add_into_lnked_lst(t_linked_lst **lnked_lst, char *filled_bfr)
 	t_linked_lst	*new_node;
 	t_linked_lst	*last_node;
 
-	if (!filled_bfr)
+	if (!filled_bfr && !filled_bfr[0])
+	{
+		destroy_linked_list(lnked_lst, NULL);
+		free(filled_bfr);
 		return ;
+	}
 	new_node = malloc(sizeof(t_linked_lst));
 	if (!new_node)
 		return ;
@@ -66,15 +70,11 @@ void	begin_lines_into_lnked_lst(t_linked_lst **lnked_lst, int fd)
 	{
 		to_fill_buf = malloc(BUFFER_SIZE + 1);
 		char_read_size = read(fd, to_fill_buf, BUFFER_SIZE);
-		if (char_read_size == 0 || char_read_size == -1)
+		if (char_read_size <= 0)
 		{
-			if (char_read_size == 0)
-				free(to_fill_buf);
-			else if (char_read_size == -1)
-			{
-				free(to_fill_buf);
+			free(to_fill_buf);
+			if (char_read_size == -1)
 				destroy_linked_list(lnked_lst, NULL);
-			}
 			return ;
 		}
 		to_fill_buf[char_read_size] = '\0';

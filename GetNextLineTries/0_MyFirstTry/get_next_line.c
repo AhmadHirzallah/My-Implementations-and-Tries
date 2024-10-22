@@ -73,8 +73,13 @@ static void	prepare_lnkd_lst_for_next(t_linked_lst **lnked_lst)
 
 	clean_new_node = malloc(sizeof(t_linked_lst));
 	clean_new_node->str_buf_content = malloc(BUFFER_SIZE + 1);
-	if ((NULL == clean_new_node) || (NULL == clean_new_node->str_buf_content))
+	if (!clean_new_node)
 		return ;
+	if (!clean_new_node->str_buf_content)
+	{
+		free(clean_new_node);
+		return ;
+	}
 	last_node = find__get_last_node(*lnked_lst);
 	i = 0;
 	j = 0;

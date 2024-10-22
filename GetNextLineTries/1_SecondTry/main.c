@@ -1,5 +1,4 @@
 #include "get_next_line.h"
-#include "get_next_line_bonus.h"
 #include <fcntl.h>
 #include <stdio.h>
 #include <unistd.h> // For the close() function
@@ -9,7 +8,7 @@ int	main(void)
 	int		fd;
 	char	*a;
 
-	fd = open("test.txt", O_RDONLY);
+	fd = open("text.txt", O_RDONLY);
 	if (fd < 0)
 	{
 		perror("Error opening file");
