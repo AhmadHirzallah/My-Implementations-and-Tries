@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: okraus <okraus@student.42prague.com>       +#+  +:+       +#+        */
+/*   By: ahirzall <ahirzall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/28 12:38:33 by okraus            #+#    #+#             */
-/*   Updated: 2024/10/17 09:42:05 by okraus           ###   ########.fr       */
+/*   Created: 2024/10/19 21:43:50 by ahirzall          #+#    #+#             */
+/*   Updated: 2024/10/19 21:43:51 by ahirzall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
 
 static void	gnl_double_temp(t_gnl *gnl, long *iter)
 {

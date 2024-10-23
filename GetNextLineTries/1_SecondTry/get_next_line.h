@@ -17,23 +17,25 @@
 #  define BUFFER_SIZE 42
 # endif
 
-# include <unistd.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_gnl
 {
 	char	leftover[1024][BUFFER_SIZE];
 	char	buffer[BUFFER_SIZE];
-	long		size_lft_ovr[1024];	//how many chars in leftover
-	long		count_newlns[1024];	//how many newlines in leftover
+	long	size_lft_ovr[1024];
+	long	count_newlns[1024];
 	char	*temp;
 	char	*temp2;
 	int		fd;
-	long		size_temp;		//how big is temp
-	long		length_temp;	//how many chars in temp
+	long	size_temp;
+	long	length_temp;
 	char	*line;
-}	t_gnl;
+}			t_gnl;
 
-char	*get_next_line(int fd);
+void		gnl_copy_from_leftover(t_gnl *gnl);
+void		gnl_read_file(t_gnl *gnl, long r, long i, long iter);
+char		*get_next_line(int fd);
 
 #endif
